@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import { CustomButton } from ".";
+import { Button } from "./ui/button";
 
 const Hero = () => {
     return (
@@ -10,7 +10,7 @@ const Hero = () => {
 
                 <p className="hero__subtitle">Find the perfect wings to take you to new heights.</p>
 
-                <CustomButton />
+                <Button variant={"default"}> New ShadDN Button</Button>
             </div>
         </div>
     )
