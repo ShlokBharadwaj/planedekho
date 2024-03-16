@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={`${cn(buttonVariants({ variant, size, className }))} custom-btn`}
         ref={ref}
-        onClick={() => { }}
+        onClick={handleClick}
         disabled={false}
         type="button"
         {...props}

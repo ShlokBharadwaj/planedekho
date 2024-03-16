@@ -9,6 +9,6 @@ export interface ButtonProps
     variant: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
     size: "default" | "sm" | "lg" | "icon";
     title: string;
-    containerStyles: string;
-    handleClick: MouseEventHandler<HTMLButtonElement>;
+    containerStyles?: string;
+    handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
