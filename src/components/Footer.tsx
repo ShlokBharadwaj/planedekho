@@ -1,47 +1,34 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import Link from 'next/link';
+
+import { ROUTES } from '@/constants/index';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white px-8 py-12">
-      <div className="container mx-auto max-w-screen-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
+    <footer className="text-white flex flex-col items-center space-y-4 py-6">
+      <div className="flex space-x-4">
+        <Link
+          href="/"
+          className="flex items-center justify-center space-x-2 cursor-pointer"
+        >
           <Image
-            src="/logos.png" // replace with your logo path
-            alt="Company Logo"
+            src="/logos.png"
+            alt="PlaneDekho Logo"
             width={130}
-            height={50}
+            height={40}
           />
-          <p className="mt-4">&copy; {new Date().getFullYear()} PlaneDekho</p>
-        </div>
-        <div>
-          <h3 className="font-bold mb-3">About</h3>
-          <ul>
-            <li><Link href="#">About Us</Link></li>
-            <li><Link href="#">Our Team</Link></li>
-            <li><Link href="#">Careers</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold mb-3">Company</h3>
-          <ul>
-            <li><Link href="#">Our Services</Link></li>
-            <li><Link href="#">Privacy Policy</Link></li>
-            <li><Link href="#">Terms of Use</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold mb-3">Socials</h3>
-          <div className="flex space-x-4">
-            <a href="#"><FontAwesomeIcon icon={faFacebook} className="w-6" /> </a>
-            <a href="#"><FontAwesomeIcon icon={faTwitter} className="w-6" /> </a>
-            <a href="#"><FontAwesomeIcon icon={faInstagram} className="w-6" /> </a>
-          </div>
-        </div>
+        </Link>
       </div>
+      <div className="flex space-x-4">
+        {ROUTES.map((route) => (
+          <Link key={route.path} href={route.path} className="text-white hover:text-blue-500">
+            {route.name}
+          </Link>
+        ))}
+      </div>
+      <hr className="w-full border-gray-600" />
+      <p>&copy; {new Date().getFullYear()}<Link href={"https://github.com/ShlokBharadwaj"} target="_blank" className="text-blue-400 hover:text-blue-500">&nbsp;Shlok Bharadwaj</Link></p>
     </footer>
   );
 }
