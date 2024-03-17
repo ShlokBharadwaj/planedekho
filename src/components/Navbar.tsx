@@ -6,8 +6,8 @@ const Navbar = () => {
     <nav className="flex items-center justify-between p-2 bg-gray-800">
       <div className="">
         <Image
-          src="/logosssss.png"
-          alt="Website Logo"
+          src="/logos.png"
+          alt="PlaneDekho Logo"
           width={130}
           height={40}
         />
