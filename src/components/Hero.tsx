@@ -15,8 +15,15 @@ const Hero = () => {
     }
 
     return (
-        <div className="relative bg-cover bg-center h-screen flex items-center justify-center"
-            style={{ backgroundImage: "url('https://source.unsplash.com/random/?airplane,airline,aircraft,plane')" }}>
+        <div className="relative bg-cover bg-center h-screen flex items-center justify-center">
+            <Image
+                src="https://source.unsplash.com/random/?airplane,airline,aircraft,plane"
+                alt="Hero Image"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                className="z-0"
+            />
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative text-center p-4">
                 <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold mb-4">Find your right airplane — Swiftly and Seamlessly!</h1>
