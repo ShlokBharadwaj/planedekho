@@ -1,23 +1,33 @@
 import React from 'react';
 import Image from 'next/image';
 
+import { Button } from "./ui/button";
+import Link from "next/link";
+
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between p-2 bg-gray-800">
-      <div className="">
-        <Image
-          src="/logos.png"
-          alt="PlaneDekho Logo"
-          width={130}
-          height={40}
+    <header className="w-full absolute z-10">
+      <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4">
+        <Link
+          href="/"
+          className="flex items-center justify-center space-x-2 cursor-pointer"
+        >
+          <Image
+            src="/logos.png"
+            alt="PlaneDekho Logo"
+            width={130}
+            height={40}
+          />
+        </Link>
+        <Button 
+          variant="default"
+          size="sm"
+          title="Sign In"
+          btnType="button"
+          className="min-w-[80px]"
         />
-      </div>
-      <div>
-        <a href="#home" className="text-white mx-2">Home</a>
-        <a href="#about" className="text-white mx-2">About</a>
-        <a href="#contact" className="text-white mx-2">Contact</a>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
 

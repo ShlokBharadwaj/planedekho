@@ -41,7 +41,7 @@ const buttonVariants = cva(
 )
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, title, containerStyles, handleClick, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, title, containerStyles, handleClick, btnType, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
@@ -49,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         onClick={handleClick}
         disabled={false}
-        type="button"
+        type={btnType || "button"}
         {...props}
       >
         <span className="flex items-center justify-center">
