@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ROUTES } from '@/constants/index';
+import { footerLinks } from '@/constants/index';
 
 const Footer = () => {
   return (
@@ -21,7 +21,7 @@ const Footer = () => {
         </Link>
       </div>
       <div className="flex space-x-4">
-        {ROUTES.map((route) => (
+        {footerLinks.map((route) => (
           <Link key={route.path} href={route.path} className="text-white hover:text-blue-500">
             {route.name}
           </Link>
