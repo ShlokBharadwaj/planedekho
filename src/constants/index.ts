@@ -188,3 +188,50 @@ export const speed = [
         value: "1900-2000",
       },
 ];
+
+export const manufacturer = [
+    {
+        title: "Airbus",
+        value: "Airbus",
+      },
+      {
+        title: "Boeing",
+        value: "Boeing",
+      },
+      {
+        title: "Bombardier",
+        value: "Bombardier",
+      },
+      {
+        title: "Embraer",
+        value: "Embraer",
+      },
+      {
+        title: "Gulfstream",
+        value: "Gulfstream",
+      },
+      {
+        title: "Cessna",
+        value: "Cessna",
+      },
+      {
+        title: "Dassault",
+        value: "Dassault",
+      },
+      {
+        title: "Pilatus",
+        value: "Pilatus",
+      },
+      {
+        title: "Piper",
+        value: "Piper",
+      },
+      {
+        title: "Beechcraft",
+        value: "Beechcraft",
+      },
+      {
+        title: "Other",
+        value: "Other",
+      },
+];
