@@ -19,10 +19,10 @@ const Hero = () => {
             <Image
                 src="https://images.unsplash.com/uploads/14114640960629b5c3fa0/116dc05a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Hero Image"
-                layout="fill"
-                objectFit="cover"
                 quality={100}
-                className="z-0"
+                width={2560}
+                height={2083}
+                className="z-0 object-cover w-full h-full absolute inset-0"
             />
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative text-center p-4">
