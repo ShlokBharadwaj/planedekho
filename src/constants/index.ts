@@ -189,7 +189,7 @@ export const speed = [
       },
 ];
 
-export const manufacturer = [
+export const manufacturers = [
     {
         title: "Airbus",
         value: "Airbus",
