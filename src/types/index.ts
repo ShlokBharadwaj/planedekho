@@ -18,3 +18,11 @@ export interface CustomFilterProps {
     title: string;
 };
 
+export interface SearchBarProps {
+    className?: string;
+};
+
+export interface ManufacturerSearchProps {
+    manufacturer: string;
+    setManufacturer: (manufacturer: string) => void;
+};
