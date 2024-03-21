@@ -24,7 +24,7 @@ const ManufacturerSearch = ({ manufacturer, setManufacturer }: ManufacturerSearc
       );
 
   return (
-    <div className="flex-1 max-sm:w-full flex justify-start items-center">
+    <div className="relative flex-1 max-sm:w-full flex justify-start items-center">
       <Combobox value={manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
           <Combobox.Button
@@ -49,35 +49,36 @@ const ManufacturerSearch = ({ manufacturer, setManufacturer }: ManufacturerSearc
             leaveTo="transform opacity-0 scale-95"
             afterLeave={() => setselectedItem('')}
           >
-            <Combobox.Options>
-              {filterManuf.map((item) => (
-                <Combobox.Option
-                  key={item.value}
-                  value={item.value}
-                  className="p-3 text-gray-600 bg-white border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
-                >
-                  {({ selected, active }) => (
-                    <>
-                      <span
-                        className={`block truncate ${selected ? 'font-medium' : 'font-normal'
-                          }`}
-                      >
-                        {item.value}
-                      </span>
-                      {selected ? (
+            <div className="absolute z-50 w-full h-64 overflow-auto">
+              <Combobox.Options>
+                {filterManuf.map((item) => (
+                  <Combobox.Option
+                    key={item.value}
+                    value={item.value}
+                    className="p-3 text-gray-600 bg-white border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {({ selected, active }) => (
+                      <>
                         <span
-                          className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-teal-600'
+                          className={`block truncate ${selected ? 'font-medium' : 'font-normal'
                             }`}
                         >
-                          <FontAwesomeIcon icon={faCheck} className="h-5 w-5" aria-hidden="true" />
+                          {item.value}
                         </span>
-                      ) : null}
-                    </>
-                  )}
-                </Combobox.Option>
-              ))}
-            </Combobox.Options>
-
+                        {selected ? (
+                          <span
+                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-teal-600'
+                              }`}
+                          >
+                            <FontAwesomeIcon icon={faCheck} className="h-5 w-5" aria-hidden="true" />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            </div>
           </Transition>
         </div>
       </Combobox >

@@ -4,7 +4,7 @@ import { CustomFilter, Hero, SearchBar } from "@/components";
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
+    <main>
       <Hero />
       <div className="mt-12 p-6 max-w-[1440px] mx-auto" id="discover">
         <div className="flex flex-col items-start justify-start gap-y-2.5">
