@@ -26,3 +26,20 @@ export interface ManufacturerSearchProps {
     manufacturer: string;
     setManufacturer: (manufacturer: string) => void;
 };
+
+export interface FetchPlanesOptions {
+    manufacturer?: string;
+    model?: string;
+    engine_type?: string;
+    min_speed?: number;
+    max_speed?: number;
+    min_range?: number;
+    max_range?: number;
+    min_length?: number;
+    max_length?: number;
+    min_height?: number;
+    max_height?: number;
+    min_wingspan?: number;
+    max_wingspan?: number;
+    limit?: number;
+}

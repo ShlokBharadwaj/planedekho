@@ -1,4 +1,6 @@
-export async function fetchPlanes() {
+import { FetchPlanesOptions } from "@/types";
+
+export async function fetchPlanes(options: FetchPlanesOptions = {}) {
     const apiKey = process.env.API_NINJAS_API_KEY;
 
     if (!apiKey) {
@@ -9,7 +11,12 @@ export async function fetchPlanes() {
         'X-Api-Key': apiKey,
     };
 
-    const url = 'https://api.api-ninjas.com/v1/aircraft?manufacturer=Boeing&limit=1';
+    let url = 'https://api.api-ninjas.com/v1/aircraft?';
+
+    // Add each option as a query parameter
+    for (const [key, value] of Object.entries(options)) {
+        url += `${key}=${encodeURIComponent(value)}&`;
+    }
 
     const response = await fetch(url, { method: 'GET', headers });
 
