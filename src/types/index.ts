@@ -43,3 +43,21 @@ export interface FetchPlanesOptions {
     max_wingspan?: number;
     limit?: number;
 }
+
+export interface PlaneProps {
+    manufacturer: string;
+    model: string;
+    engine_type: string;
+    engine_thrust_lb_ft: string;
+    max_speed_knots: string;
+    cruise_speed_knots: string;
+    ceiling_ft: string;
+    takeoff_groundstring_run_ft: string;
+    landing_ground_roll_ft: string;
+    gross_weight_lbs: string;
+    empty_weight_lbs: string;
+    length_ft: string;
+    height_ft: string;
+    wing_span_ft: string;
+    range_nautical_miles: string;
+};

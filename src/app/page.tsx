@@ -1,15 +1,15 @@
 import Image from "next/image";
 
-import { CustomFilter, Hero, SearchBar } from "@/components";
+import { CustomFilter, Hero, PlaneCard, SearchBar } from "@/components";
 import { fetchPlanes } from "@/utils";
 
 export default async function Home() {
 
-  const planes = await fetchPlanes({ manufacturer: 'Boeing', limit: 1 });
+  const planes = await fetchPlanes({ manufacturer: 'Boeing', limit: 4 });
 
   const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;
 
-  console.log(planes);
+  // console.log(planes);
 
   return (
     <main>
@@ -34,19 +34,13 @@ export default async function Home() {
             <p className="text-2xl font-bold">No data found</p>
           </div>
         ) : (
-          <div className="mt-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {planes.map((plane, index) => (
-              <div key={index} className="flex flex-col bg-white rounded-lg shadow-md p-5">
-                <div className="w-full h-[200px] relative">
-                  <Image src={plane.image} alt={plane.name} layout="fill" objectFit="cover" className="rounded-lg" />
-                </div>
-                <div className="mt-5">
-                  <h1 className="text-xl font-bold">{plane.name}</h1>
-                  <p className="text-sm font-light mt-2">{plane.manufacturer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <section>
+            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
+              {planes?.map((plane) => (
+                <PlaneCard plane={plane} />
+              ))}
+            </div>
+          </section>
         )}
 
 
