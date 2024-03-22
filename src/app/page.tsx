@@ -1,8 +1,14 @@
 import Image from "next/image";
 
 import { CustomFilter, Hero, SearchBar } from "@/components";
+import { fetchPlanes } from "@/utils";
 
-export default function Home() {
+export default async function Home() {
+
+  const planes = await fetchPlanes();
+
+  console.log(planes);
+
   return (
     <main>
       <Hero />
