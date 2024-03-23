@@ -5,7 +5,7 @@ import { footerLinks } from '@/constants/index';
 
 const Footer = () => {
   return (
-    <footer className="text-white flex flex-col items-center space-y-4 py-6 max-w-[1440px] mx-auto z-10">
+    <footer className="bg-gray-800 text-white flex flex-col items-center space-y-4 py-6 max-w-full mx-auto z-10">
       <div className="flex space-x-4">
         <Link
           href="/"
