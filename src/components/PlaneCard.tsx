@@ -1,11 +1,11 @@
 'use client';
 
-import { PlaneProps } from "@/types";
+import { PlaneResponseProps } from "@/types";
 import { useState } from "react"
 
 
 interface PlaneCardProps {
-    plane: PlaneProps;
+    plane: PlaneResponseProps;
 }
 
 const PlaneCard = ({ plane }: PlaneCardProps) => {
