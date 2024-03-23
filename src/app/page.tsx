@@ -5,29 +5,31 @@ import { fetchPlanes } from "@/utils";
 
 export default async function Home() {
 
-  const planes1 = await fetchPlanes({ manufacturer: 'Boeing' });
-  const planes2 = await fetchPlanes({ model: '747' });
-  const planes3 = await fetchPlanes({ engine_type: 'jet' });
-  const planes4 = await fetchPlanes({ min_speed: 10 });
-  const planes5 = await fetchPlanes({ max_speed: 600 });
-  const planes6 = await fetchPlanes({ min_range: 1000, max_range: 2000 });
-  const planes7 = await fetchPlanes({ min_length: 100, max_length: 200 });
-  const planes8 = await fetchPlanes({ min_height: 20, max_height: 30 });
-  const planes9 = await fetchPlanes({ min_wingspan: 100, max_wingspan: 200 });
-  const planes10 = await fetchPlanes({ min_range: 1, limit: 3});
+  // const planes1 = await fetchPlanes({ manufacturer: 'Boeing' });
+  // const planes2 = await fetchPlanes({ model: '747' });
+  // const planes3 = await fetchPlanes({ engine_type: 'jet' });
+  // const planes4 = await fetchPlanes({ min_speed: 10 });
+  // const planes5 = await fetchPlanes({ max_speed: 600 });
+  // const planes6 = await fetchPlanes({ min_range: 1000, max_range: 2000 });
+  // const planes7 = await fetchPlanes({ min_length: 100, max_length: 200 });
+  // const planes8 = await fetchPlanes({ min_height: 20, max_height: 30 });
+  // const planes9 = await fetchPlanes({ min_wingspan: 100, max_wingspan: 200 });
+  // const planes10 = await fetchPlanes({ min_range: 1, limit: 3});
 
-  // const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;
+  const planes = await fetchPlanes({ manufacturer: 'Boeing', limit: 12});
 
-  console.log("Planes 1: ", planes1);
-  console.log("Planes 2: ", planes2);
-  console.log("Planes 3: ", planes3);
-  console.log("Planes 4: ", planes4);
-  console.log("Planes 5: ", planes5);
-  console.log("Planes 6: ", planes6);
-  console.log("Planes 7: ", planes7);
-  console.log("Planes 8: ", planes8);
-  console.log("Planes 9: ", planes9);
-  console.log("Planes 10: ", planes10);
+  const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;
+
+  // console.log("Planes 1: ", planes1);
+  // console.log("Planes 2: ", planes2);
+  // console.log("Planes 3: ", planes3);
+  // console.log("Planes 4: ", planes4);
+  // console.log("Planes 5: ", planes5);
+  // console.log("Planes 6: ", planes6);
+  // console.log("Planes 7: ", planes7);
+  // console.log("Planes 8: ", planes8);
+  // console.log("Planes 9: ", planes9);
+  // console.log("Planes 10: ", planes10);
 
   return (
     <main>
@@ -47,7 +49,7 @@ export default async function Home() {
         </div>
 
 
-        {/* {isDataEmpty ? (
+        {isDataEmpty ? (
           <div className="flex justify-center items-center w-full h-[50vh]">
             <p className="text-2xl font-bold">No data found</p>
           </div>
@@ -59,7 +61,7 @@ export default async function Home() {
               ))}
             </div>
           </section>
-        )} */}
+        )}
 
 
       </div>
