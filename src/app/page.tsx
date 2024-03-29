@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { CustomFilter, Hero, PlaneCard, SearchBar } from "@/components";
 import { fetchPlaneImage, fetchPlanes } from "@/utils";
+import { PlaneResponseProps } from "@/types";
 
 export default async function Home() {
 
@@ -16,13 +17,26 @@ export default async function Home() {
   // const planes9 = await fetchPlanes({ min_wingspan: 100, max_wingspan: 200 });
   // const planes10 = await fetchPlanes({ min_range: 1, limit: 3});
 
-  const planes = await fetchPlanes({ manufacturer: 'Boeing', limit: 12 });
+  // The code below works: 
+
+  // const planes = await fetchPlanes({ manufacturer: 'Boeing', limit: 3 });
+
+  // const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;
+
+  // const images = fetchPlaneImage('Boeing', '777-200ER')
+  //   .then(response => console.log(response))
+  //   .catch(error => console.error(error));
+
+  // The code above works: 
+
+  const planes = await Promise.all(
+    (await fetchPlanes({ manufacturer: 'Bombardier', limit: 12 })).map(async (plane: PlaneResponseProps) => {
+      const image = await fetchPlaneImage(plane.manufacturer, plane.model);
+      return { ...plane, image: image.image };
+    })
+  );
 
   const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;
-
-  const images = fetchPlaneImage('Boeing', '777-200ER')
-    .then(response => console.log(response))
-    .catch(error => console.error(error));
 
   // console.log("Planes 1: ", planes1);
   // console.log("Planes 2: ", planes2);

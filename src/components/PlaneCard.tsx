@@ -20,7 +20,7 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
                 <FontAwesomeIcon icon={faPlane} className="text-xl mr-2 text-blue-500" />
                 <h2 className="text-xl font-bold">{manufacturer} {model}</h2>
             </div>
-            <img src="https://via.placeholder.com/150" alt="Plane" className="w-full h-auto object-cover mb-4 rounded-md" />
+            <img src={plane.image || "https://via.placeholder.com/150"} alt="Plane" className="w-full h-auto object-cover mb-4 rounded-md" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-400">
                 <p><FontAwesomeIcon icon={faTachometerAlt} className="mr-2 text-red-500" /><span className="font-bold text-white">Max Speed:</span> {max_speed_knots} knots</p>
                 <p><FontAwesomeIcon icon={faRulerVertical} className="mr-2 text-green-500" /><span className="font-bold text-white">Height:</span> {height_ft} ft</p>
