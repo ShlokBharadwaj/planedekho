@@ -46,14 +46,16 @@ export async function fetchPlaneImage(manufacturer: string, model: string): Prom
         return {
             manufacturer: manufacturer,
             model: model,
-            image: result.results[0].urls.small
+            image: result.results[0].urls.small,
+            photographer: result.results[0].user.name,
         };
     } else {
+        const randomImageResponse = await fetch('https://api.unsplash.com/photos/random?query=airplane', { method: 'GET', headers });
+        const randomImageResult = await randomImageResponse.json();
         return {
             manufacturer: manufacturer,
             model: model,
-            image: '' // return empty string or a default image URL if no image found
-            // Maybe add something like this: `https://images.unsplash.com/photo-1569629743817-70d8db6c323b?q=80&w=1798&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`
+            image: randomImageResult.urls.small // return random airplane image URL if no image found
         };
     }
 }

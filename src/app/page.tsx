@@ -30,9 +30,9 @@ export default async function Home() {
   // The code above works: 
 
   const planes = await Promise.all(
-    (await fetchPlanes({ manufacturer: 'Bombardier', limit: 12 })).map(async (plane: PlaneResponseProps) => {
+    (await fetchPlanes({ manufacturer: 'Embraer', limit: 1 })).map(async (plane: PlaneResponseProps) => {
       const image = await fetchPlaneImage(plane.manufacturer, plane.model);
-      return { ...plane, image: image.image };
+      return { ...plane, image: image.image, photographer: image.photographer};
     })
   );
 
@@ -75,7 +75,7 @@ export default async function Home() {
           <section>
             <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14">
               {planes?.map((plane, key) => (
-                <PlaneCard key={key} plane={plane} />
+                <PlaneCard key={key} plane={plane} photographer={plane.photographer}/>
               ))}
             </div>
           </section>
