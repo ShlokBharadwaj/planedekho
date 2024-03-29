@@ -65,3 +65,9 @@ export interface PlaneResponseProps {
     takeoff_over_50ft_ft?: string;
     landing_over_50ft_ft?: string;
 };
+
+export interface PlaneImageResponseProps {
+    manufacturer: string;
+    model: string;
+    image: string;
+};
