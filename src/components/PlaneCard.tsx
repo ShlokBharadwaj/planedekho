@@ -1,8 +1,8 @@
 'use client';
 
 import { PlaneResponseProps } from "@/types";
-import { useState } from "react"
-import { Button } from "./ui/button";
+// import { useState } from "react"
+// import { Button } from "./ui/button";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faTachometerAlt, faRulerVertical, faRulerHorizontal, faWeightHanging, faMapMarkedAlt, faRulerCombined, faCogs, faMountain } from '@fortawesome/free-solid-svg-icons';
