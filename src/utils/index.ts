@@ -42,12 +42,15 @@ export async function fetchPlaneImage(manufacturer: string, model: string): Prom
 
     const result = await response.json();
 
+    console.log(result.results);
+
     if (result.results.length > 0) {
         return {
             manufacturer: manufacturer,
             model: model,
             image: result.results[0].urls.small,
             photographer: result.results[0].user.name,
+            photographerUsername: result.results[0].user.username,
         };
     } else {
         const randomImageResponse = await fetch('https://api.unsplash.com/photos/random?query=airplane', { method: 'GET', headers });

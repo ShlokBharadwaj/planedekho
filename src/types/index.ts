@@ -66,6 +66,7 @@ export interface PlaneResponseProps {
     landing_over_50ft_ft?: string;
     image?: string;
     photographer?: string;
+    photographerUsername?: string;
 };
 
 export interface PlaneImageResponseProps {
@@ -73,4 +74,5 @@ export interface PlaneImageResponseProps {
     model: string;
     image: string;
     photographer?: string;
+    photographerUsername?: string;
 };
