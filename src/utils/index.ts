@@ -42,7 +42,7 @@ export async function fetchPlaneImage(manufacturer: string, model: string): Prom
 
     const result = await response.json();
 
-    console.log(result.results);
+    // console.log(result.results);
 
     if (result.results.length > 0) {
         return {
