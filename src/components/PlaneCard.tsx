@@ -19,9 +19,16 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
 
     return (
         <div className="flex flex-col bg-gray-800 rounded-xl p-6 shadow-lg text-white w-full transition-transform duration-200 ease-in transform hover:scale-105">
-            <div className="flex items-center mb-4">
-                <FontAwesomeIcon icon={faPlane} className="text-xl mr-2 text-blue-500" />
-                <h2 className="text-xl font-bold">{manufacturer} {model}</h2>
+            <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                    <FontAwesomeIcon icon={faPlane} className="text-xl mr-2 text-blue-500" />
+                    <h2 className="text-xl font-bold">{manufacturer} {model}</h2>
+                </div>
+                <div>
+                    <Button variant={"outline"} size={"default"} title={"Details"}>
+
+                    </Button>
+                </div>
             </div>
             <div className="relative bg-white rounded-md shadow-md overflow-hidden">
                 <img src={plane.image || "https://via.placeholder.com/150"} alt="Plane" className="w-full h-auto object-cover" />
@@ -29,16 +36,21 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
                     <p className="text-sm">Photo by <a href={`https://unsplash.com/@${plane.photographerUsername}?utm_source=planedekho&utm_medium=referral `} target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">{plane.photographer}</a> on <a href="https://unsplash.com/?utm_source=planedekho&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">Unsplash</a></p>
                 </div>
             </div>
-            <div className="relative flex w-full text-gray-400 mt-4">
-                <div className="flex group-hover:invisible w-full justify-between gap-2">
-                    <p><FontAwesomeIcon icon={faTachometerAlt} className="mr-2 text-red-500" /><span className="font-bold text-white">Max Speed:</span> {max_speed_knots} knots</p>
-                    <p><FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2 text-blue-500" /><span className="font-bold text-white">Range:</span> {range_nautical_miles} nautical miles</p>
-                    <p><FontAwesomeIcon icon={faCogs} className="mr-2 text-gray-500" /><span className="font-bold text-white">Engine Type:</span> {engine_type}</p>
-                    {/* <p><FontAwesomeIcon icon={faRulerVertical} className="mr-2 text-green-500" /><span className="font-bold text-white">Height:</span> {height_ft} ft</p>
-                    <p><FontAwesomeIcon icon={faRulerHorizontal} className="mr-2 text-yellow-500" /><span className="font-bold text-white">Wing Span:</span> {wing_span_ft} ft</p>
-                    <p><FontAwesomeIcon icon={faWeightHanging} className="mr-2 text-purple-500" /><span className="font-bold text-white">Gross Weight:</span> {gross_weight_lbs} lbs</p>
-                    <p><FontAwesomeIcon icon={faRulerCombined} className="mr-2 text-indigo-500" /><span className="font-bold text-white">Length:</span> {length_ft} ft</p>
-                    <p><FontAwesomeIcon icon={faMountain} className="mr-2 text-teal-500" /><span className="font-bold text-white">Ceiling:</span> {ceiling_ft} ft</p> */}
+            <div className="relative flex flex-row w-full text-gray-400 mt-4 justify-between gap-2 text-center">
+                <div className="flex flex-col items-center">
+                    <FontAwesomeIcon icon={faTachometerAlt} className="h-12 w-12 mb-2" />
+                    {/* <span className="font-bold text-white text-center">Max Speed</span> */}
+                    <span className="text-sm">{max_speed_knots} knots</span>
+                </div>
+                <div className="flex flex-col items-center">
+                    <FontAwesomeIcon icon={faMapMarkedAlt} className="h-12 w-12 mb-2" />
+                    {/* <span className="font-bold text-white text-center">Range</span> */}
+                    <span className="text-sm">{range_nautical_miles} nautical miles</span>
+                </div>
+                <div className="flex flex-col items-center">
+                    <FontAwesomeIcon icon={faCogs} className="h-12 w-12 mb-2" />
+                    {/* <span className="font-bold text-white text-center">Engine Type</span> */}
+                    <span className="text-sm">{engine_type}</span>
                 </div>
             </div>
         </div>
