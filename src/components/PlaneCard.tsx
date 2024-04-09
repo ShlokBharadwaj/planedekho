@@ -29,15 +29,17 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
                     <p className="text-sm">Photo by <a href={`https://unsplash.com/@${plane.photographerUsername}?utm_source=planedekho&utm_medium=referral `} target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">{plane.photographer}</a> on <a href="https://unsplash.com/?utm_source=planedekho&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">Unsplash</a></p>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-400 mt-4">
-                <p><FontAwesomeIcon icon={faTachometerAlt} className="mr-2 text-red-500" /><span className="font-bold text-white">Max Speed:</span> {max_speed_knots} knots</p>
-                <p><FontAwesomeIcon icon={faRulerVertical} className="mr-2 text-green-500" /><span className="font-bold text-white">Height:</span> {height_ft} ft</p>
-                <p><FontAwesomeIcon icon={faRulerHorizontal} className="mr-2 text-yellow-500" /><span className="font-bold text-white">Wing Span:</span> {wing_span_ft} ft</p>
-                <p><FontAwesomeIcon icon={faWeightHanging} className="mr-2 text-purple-500" /><span className="font-bold text-white">Gross Weight:</span> {gross_weight_lbs} lbs</p>
-                <p><FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2 text-blue-500" /><span className="font-bold text-white">Range:</span> {range_nautical_miles} nautical miles</p>
-                <p><FontAwesomeIcon icon={faRulerCombined} className="mr-2 text-indigo-500" /><span className="font-bold text-white">Length:</span> {length_ft} ft</p>
-                <p><FontAwesomeIcon icon={faCogs} className="mr-2 text-gray-500" /><span className="font-bold text-white">Engine Type:</span> {engine_type}</p>
-                <p><FontAwesomeIcon icon={faMountain} className="mr-2 text-teal-500" /><span className="font-bold text-white">Ceiling:</span> {ceiling_ft} ft</p>
+            <div className="relative flex w-full text-gray-400 mt-4">
+                <div className="flex group-hover:invisible w-full justify-between gap-2">
+                    <p><FontAwesomeIcon icon={faTachometerAlt} className="mr-2 text-red-500" /><span className="font-bold text-white">Max Speed:</span> {max_speed_knots} knots</p>
+                    <p><FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2 text-blue-500" /><span className="font-bold text-white">Range:</span> {range_nautical_miles} nautical miles</p>
+                    <p><FontAwesomeIcon icon={faCogs} className="mr-2 text-gray-500" /><span className="font-bold text-white">Engine Type:</span> {engine_type}</p>
+                    {/* <p><FontAwesomeIcon icon={faRulerVertical} className="mr-2 text-green-500" /><span className="font-bold text-white">Height:</span> {height_ft} ft</p>
+                    <p><FontAwesomeIcon icon={faRulerHorizontal} className="mr-2 text-yellow-500" /><span className="font-bold text-white">Wing Span:</span> {wing_span_ft} ft</p>
+                    <p><FontAwesomeIcon icon={faWeightHanging} className="mr-2 text-purple-500" /><span className="font-bold text-white">Gross Weight:</span> {gross_weight_lbs} lbs</p>
+                    <p><FontAwesomeIcon icon={faRulerCombined} className="mr-2 text-indigo-500" /><span className="font-bold text-white">Length:</span> {length_ft} ft</p>
+                    <p><FontAwesomeIcon icon={faMountain} className="mr-2 text-teal-500" /><span className="font-bold text-white">Ceiling:</span> {ceiling_ft} ft</p> */}
+                </div>
             </div>
         </div>
     );
