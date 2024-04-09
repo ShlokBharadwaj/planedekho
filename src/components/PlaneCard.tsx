@@ -26,7 +26,7 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
             <div className="relative bg-white rounded-md shadow-md overflow-hidden">
                 <img src={plane.image || "https://via.placeholder.com/150"} alt="Plane" className="w-full h-auto object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
-                    <p className="text-sm">Photo by <a href={`https://unsplash.com/@${plane.photographerUsername}`} target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">{plane.photographer}</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">Unsplash</a></p>
+                    <p className="text-sm">Photo by <a href={`https://unsplash.com/@${plane.photographerUsername}?utm_source=planedekho&utm_medium=referral `} target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">{plane.photographer}</a> on <a href="https://unsplash.com/?utm_source=planedekho&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="underline text-white hover:text-blue-400">Unsplash</a></p>
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-400 mt-4">
