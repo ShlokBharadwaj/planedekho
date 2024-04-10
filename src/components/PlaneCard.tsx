@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faTachometerAlt, faRulerVertical, faRulerHorizontal, faWeightHanging, faMapMarkedAlt, faRulerCombined, faCogs, faMountain } from '@fortawesome/free-solid-svg-icons';
+import { PlaneDetails } from ".";
 
 interface PlaneCardProps {
     plane: PlaneResponseProps;
@@ -17,6 +18,8 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
 
     const { manufacturer, model, engine_type, max_speed_knots, ceiling_ft, gross_weight_lbs, length_ft, height_ft, wing_span_ft, range_nautical_miles } = plane;
 
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div className="flex flex-col bg-gray-800 rounded-xl p-6 shadow-lg text-white w-full transition-transform duration-200 ease-in transform hover:scale-105">
             <div className="flex items-center justify-between mb-4">
@@ -25,9 +28,12 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
                     <h2 className="text-xl font-bold">{manufacturer} {model}</h2>
                 </div>
                 <div>
-                    <Button variant={"outline"} size={"default"} title={"Details"}>
-
-                    </Button>
+                    <Button
+                        variant={"link"}
+                        size={"default"}
+                        title={"Details"}
+                        handleClick={() => setIsOpen(true)}
+                    />
                 </div>
             </div>
             <div className="relative bg-white rounded-md shadow-md overflow-hidden">
@@ -38,21 +44,26 @@ const PlaneCard = ({ plane }: PlaneCardProps) => {
             </div>
             <div className="relative flex flex-row w-full text-gray-400 mt-4 justify-between gap-2 text-center">
                 <div className="flex flex-col items-center">
-                    <FontAwesomeIcon icon={faTachometerAlt} className="h-12 w-12 mb-2" />
-                    {/* <span className="font-bold text-white text-center">Max Speed</span> */}
+                    <FontAwesomeIcon icon={faTachometerAlt} className="h-10 w-10 mb-2" />
                     <span className="text-sm">{max_speed_knots} knots</span>
                 </div>
                 <div className="flex flex-col items-center">
-                    <FontAwesomeIcon icon={faMapMarkedAlt} className="h-12 w-12 mb-2" />
-                    {/* <span className="font-bold text-white text-center">Range</span> */}
+                    <FontAwesomeIcon icon={faMapMarkedAlt} className="h-10 w-10 mb-2" />
                     <span className="text-sm">{range_nautical_miles} nautical miles</span>
                 </div>
                 <div className="flex flex-col items-center">
-                    <FontAwesomeIcon icon={faCogs} className="h-12 w-12 mb-2" />
-                    {/* <span className="font-bold text-white text-center">Engine Type</span> */}
+                    <FontAwesomeIcon icon={faCogs} className="h-10 w-10 mb-2" />
                     <span className="text-sm">{engine_type}</span>
                 </div>
             </div>
+
+            <PlaneDetails
+                isOpen={isOpen}
+                closeDetails={() => setIsOpen(false)}
+                plane={plane}
+                photographer={plane.photographer}
+                photographerUsername={plane.photographerUsername}
+            />
         </div>
     );
 }
