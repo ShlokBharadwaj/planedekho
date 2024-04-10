@@ -32,7 +32,7 @@ export default async function Home() {
   const planes = await Promise.all(
     (await fetchPlanes({ manufacturer: 'Airbus', limit: 1 })).map(async (plane: PlaneResponseProps) => {
       const image = await fetchPlaneImage(plane.manufacturer, plane.model);
-      return { ...plane, image: image.image, photographer: image.photographer, photographerUsername: image.photographerUsername };
+      return { ...plane, imageSmall: image.imageSmall, imageRegular: image.imageRegular, photographer: image.photographer, photographerUsername: image.photographerUsername };
     })
   );
 

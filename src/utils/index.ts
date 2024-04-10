@@ -48,7 +48,8 @@ export async function fetchPlaneImage(manufacturer: string, model: string): Prom
         return {
             manufacturer: manufacturer,
             model: model,
-            image: result.results[0].urls.small,
+            imageSmall: result.results[0].urls.small,
+            imageRegular: result.results[0].urls.regular,
             photographer: result.results[0].user.name,
             photographerUsername: result.results[0].user.username,
         };
@@ -58,7 +59,8 @@ export async function fetchPlaneImage(manufacturer: string, model: string): Prom
         return {
             manufacturer: manufacturer,
             model: model,
-            image: randomImageResult.urls.small // return random airplane image URL if no image found
+            imageSmall: randomImageResult.urls.thumb, // return random airplane image URL if no image found
+            imageRegular: randomImageResult.urls.regular // return random airplane image URL if no image found
         };
     }
 }

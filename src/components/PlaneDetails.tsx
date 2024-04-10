@@ -61,7 +61,7 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
                 </Dialog.Title>
                 <div className="mt-2">
                   <Image
-                    src={plane.image || "https://via.placeholder.com/150"}
+                    src={plane.imageRegular || "https://via.placeholder.com/150"}
                     alt="Plane"
                     width={800}
                     height={400}

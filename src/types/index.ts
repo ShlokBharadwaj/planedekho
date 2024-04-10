@@ -65,7 +65,9 @@ export interface PlaneResponseProps {
     rate_of_climb_ft_per_min?: string;
     takeoff_over_50ft_ft?: string;
     landing_over_50ft_ft?: string;
-    image?: string;
+    // image?: string;
+    imageSmall?: string;
+    imageRegular?: string;
     photographer?: string;
     photographerUsername?: string;
 };
@@ -73,7 +75,8 @@ export interface PlaneResponseProps {
 export interface PlaneImageResponseProps {
     manufacturer: string;
     model: string;
-    image: string;
+    imageSmall?: string;
+    imageRegular?: string;
     photographer?: string;
     photographerUsername?: string;
 };
