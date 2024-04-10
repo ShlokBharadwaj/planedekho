@@ -17,6 +17,19 @@ interface PlaneDetailsProps {
   photographerUsername?: string;
 }
 
+interface IconTextProps {
+  icon: any;
+  text: string;
+  value: string | number;
+}
+
+const IconText: React.FC<IconTextProps> = ({ icon, text, value }) => (
+  <p className="text-sm text-gray-400 flex items-center">
+    <FontAwesomeIcon icon={icon} className="mr-2" fixedWidth />
+    <span className="font-semibold">{text}:</span> {value}
+  </p>
+);
+
 const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerUsername }: PlaneDetailsProps) => {
   return (
     <>
@@ -93,38 +106,14 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
                   </p>
                 </div>
                 <div className="mt-4">
-                  <p className="text-sm text-gray-400 flex items-center">
-                    <FontAwesomeIcon icon={faCogs} className="mr-2" />
-                    <span className="font-semibold">Engine Type:</span> {plane.engine_type}
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faTachometerAlt} className="mr-2" />
-                    <span className="font-semibold">Max Speed:</span> {plane.max_speed_knots} knots
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faRulerVertical} className="mr-2" />
-                    <span className="font-semibold">Ceiling:</span> {plane.ceiling_ft} ft
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faWeight} className="mr-2" />
-                    <span className="font-semibold">Gross Weight:</span> {plane.gross_weight_lbs} lbs
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faRulerHorizontal} className="mr-2" />
-                    <span className="font-semibold">Length:</span> {plane.length_ft} ft
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faRulerVertical} className="mr-2" />
-                    <span className="font-semibold">Height:</span> {plane.height_ft} ft
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faRulerHorizontal} className="mr-2" />
-                    <span className="font-semibold">Wing Span:</span> {plane.wing_span_ft} ft
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    <FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2" />
-                    <span className="font-semibold">Range:</span> {plane.range_nautical_miles} nautical miles
-                  </p>
+                  <IconText icon={faCogs} text="Engine Type" value={plane.engine_type} />
+                  <IconText icon={faTachometerAlt} text="Max Speed" value={`${plane.max_speed_knots} knots`} />
+                  <IconText icon={faRulerVertical} text="Ceiling" value={`${plane.ceiling_ft} ft`} />
+                  <IconText icon={faWeight} text="Gross Weight" value={`${plane.gross_weight_lbs} lbs`} />
+                  <IconText icon={faRulerHorizontal} text="Length" value={`${plane.length_ft} ft`} />
+                  <IconText icon={faRulerVertical} text="Height" value={`${plane.height_ft} ft`} />
+                  <IconText icon={faRulerHorizontal} text="Wing Span" value={`${plane.wing_span_ft} ft`} />
+                  <IconText icon={faMapMarkedAlt} text="Range" value={`${plane.range_nautical_miles} nautical miles`} />
                 </div>
                 <div className="mt-4 flex justify-center">
                   <Button
@@ -143,4 +132,4 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
   )
 }
 
-export default PlaneDetails
+export default PlaneDetails;
