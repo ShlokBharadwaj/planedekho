@@ -28,6 +28,8 @@ export async function fetchPlanes(options: FetchPlanesOptions = {}) {
 export async function fetchPlaneImage(manufacturer: string, model: string): Promise<PlaneImageResponseProps> {
     const apiKey = process.env.UNSPLASH_ACCESS_KEY;
 
+    // console.log("Data: ", manufacturer, model);
+
     if (!apiKey) {
         throw new Error('UNSPLASH_ACCESS_KEY is not defined');
     }

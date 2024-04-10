@@ -5,7 +5,9 @@ import Image from 'next/image';
 
 import { Dialog, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCogs, faTachometerAlt, faRulerVertical, faWeight, faRulerHorizontal, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
 import { PlaneResponseProps } from "@/types";
+import { Button } from "./ui/button";
 
 interface PlaneDetailsProps {
   isOpen: boolean;
@@ -91,39 +93,46 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
                   </p>
                 </div>
                 <div className="mt-4">
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-400 flex items-center">
+                    <FontAwesomeIcon icon={faCogs} className="mr-2" />
                     <span className="font-semibold">Engine Type:</span> {plane.engine_type}
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faTachometerAlt} className="mr-2" />
                     <span className="font-semibold">Max Speed:</span> {plane.max_speed_knots} knots
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faRulerVertical} className="mr-2" />
                     <span className="font-semibold">Ceiling:</span> {plane.ceiling_ft} ft
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faWeight} className="mr-2" />
                     <span className="font-semibold">Gross Weight:</span> {plane.gross_weight_lbs} lbs
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faRulerHorizontal} className="mr-2" />
                     <span className="font-semibold">Length:</span> {plane.length_ft} ft
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faRulerVertical} className="mr-2" />
                     <span className="font-semibold">Height:</span> {plane.height_ft} ft
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faRulerHorizontal} className="mr-2" />
                     <span className="font-semibold">Wing Span:</span> {plane.wing_span_ft} ft
                   </p>
                   <p className="text-sm text-gray-400">
+                    <FontAwesomeIcon icon={faMapMarkedAlt} className="mr-2" />
                     <span className="font-semibold">Range:</span> {plane.range_nautical_miles} nautical miles
                   </p>
                 </div>
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                <div className="mt-4 flex justify-center">
+                  <Button
+                    variant={"default"}
+                    size={"default"}
+                    title={"Close"}
                     onClick={closeDetails}
-                  >
-                    Close
-                  </button>
+                  />
                 </div>
               </div>
             </Transition.Child>

@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Button } from "./ui/button";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlane, faTachometerAlt, faRulerVertical, faRulerHorizontal, faWeightHanging, faMapMarkedAlt, faRulerCombined, faCogs, faMountain } from '@fortawesome/free-solid-svg-icons';
+import { faPlane, faTachometerAlt, faMapMarkedAlt, faCogs } from '@fortawesome/free-solid-svg-icons';
 import { PlaneDetails } from ".";
 
 interface PlaneCardProps {
@@ -16,7 +16,7 @@ interface PlaneCardProps {
 
 const PlaneCard = ({ plane }: PlaneCardProps) => {
 
-    const { manufacturer, model, engine_type, max_speed_knots, ceiling_ft, gross_weight_lbs, length_ft, height_ft, wing_span_ft, range_nautical_miles } = plane;
+    const { manufacturer, model, engine_type, max_speed_knots, range_nautical_miles } = plane;
 
     const [isOpen, setIsOpen] = useState(false);
 
