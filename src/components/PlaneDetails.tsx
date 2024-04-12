@@ -26,7 +26,7 @@ interface IconTextProps {
 const IconText: React.FC<IconTextProps> = ({ icon, text, value }) => (
   <p className="text-sm text-gray-400 flex items-center">
     <FontAwesomeIcon icon={icon} className="mr-2" fixedWidth />
-    <span className="font-semibold">{text}:</span> {value}
+    <span className="font-semibold">{text}:&nbsp;</span> {value}
   </p>
 );
 
