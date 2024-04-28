@@ -80,7 +80,7 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
                     alt="Plane"
                     width={800}
                     height={400}
-                    layout="responsive"
+                    className="object-cover w-full max-h-80 rounded-lg"
                   />
                 </div>
                 <div className="mt-4">
