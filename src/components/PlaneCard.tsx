@@ -3,6 +3,7 @@
 import { PlaneResponseProps } from "@/types";
 import { useState } from "react"
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faTachometerAlt, faMapMarkedAlt, faCogs } from '@fortawesome/free-solid-svg-icons';
