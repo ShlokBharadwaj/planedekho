@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { Dialog, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCogs, faTachometerAlt, faRulerVertical, faWeight, faRulerHorizontal, faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCogs, faTachometerAlt, faRulerVertical, faWeight, faRulerHorizontal, faMapMarkedAlt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { PlaneResponseProps } from "@/types";
 import { Button } from "./ui/button";
 
@@ -24,7 +24,7 @@ interface IconTextProps {
 }
 
 const IconText: React.FC<IconTextProps> = ({ icon, text, value }) => (
-  <p className="text-sm text-gray-400 flex items-center">
+  <p className="text-sm text-gray-400 flex items-center mb-2">
     <FontAwesomeIcon icon={icon} className="mr-2" fixedWidth />
     <span className="font-semibold">{text}:&nbsp;</span> {value}
   </p>
@@ -68,13 +68,23 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-3xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-gray-800 shadow-xl rounded-2xl">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-white"
-                >
-                  {plane.manufacturer} {plane.model}
-                </Dialog.Title>
-                <div className="mt-2">
+                <div className="flex justify-between items-center">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-white"
+                  >
+                    {plane.manufacturer} {plane.model}
+                  </Dialog.Title>
+                  <Button
+                    variant={"link"}
+                    size={"sm"}
+                    title={"Close"}
+                    onClick={closeDetails}
+                  >
+                    <FontAwesomeIcon icon={faTimesCircle} className="text-white text-xl" />
+                  </Button>
+                </div>
+                <div className="mt-4">
                   <Image
                     src={plane.imageRegular || "https://via.placeholder.com/150"}
                     alt="Plane"
@@ -83,29 +93,27 @@ const PlaneDetails = ({ isOpen, closeDetails, plane, photographer, photographerU
                     className="object-cover w-full max-h-80 rounded-lg"
                   />
                 </div>
-                <div className="mt-4">
-                  <p className="text-sm text-gray-400">
-                    Photo by {photographerUsername && " "}
-                    <a
-                      href={`https://unsplash.com/@${photographerUsername}?utm_source=planedekho&utm_medium=referral`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline text-white hover:text-blue-400"
-                    >
-                      {photographer}
-                    </a>{" "}
-                    on{" "}
-                    <a
-                      href="https://unsplash.com/?utm_source=planedekho&utm_medium=referral"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline text-white hover:text-blue-400"
-                    >
-                      Unsplash
-                    </a>
-                  </p>
+                <div className="mt-4 text-sm text-gray-400">
+                  Photo by{" "}
+                  <a
+                    href={`https://unsplash.com/@${photographerUsername}?utm_source=planedekho&utm_medium=referral`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-white hover:text-blue-400"
+                  >
+                    {photographer}
+                  </a>{" "}
+                  on{" "}
+                  <a
+                    href="https://unsplash.com/?utm_source=planedekho&utm_medium=referral"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-white hover:text-blue-400"
+                  >
+                    Unsplash
+                  </a>
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                   <IconText icon={faCogs} text="Engine Type" value={plane.engine_type} />
                   <IconText icon={faTachometerAlt} text="Max Speed" value={`${plane.max_speed_knots} knots`} />
                   <IconText icon={faRulerVertical} text="Ceiling" value={`${plane.ceiling_ft} ft`} />
