@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
 
     const newPath = `${window.location.pathname}?${params.toString()}`;
 
-    router.push(newPath);
+    router.push(newPath, { scroll: false });
   };
 
   return (
