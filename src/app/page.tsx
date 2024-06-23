@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CustomFilter, Hero, PlaneCard, SearchBar } from "@/components";
 import { fetchPlaneImage, fetchPlanes } from "@/utils";
 import { PlaneResponseProps } from "@/types";
+import { range, speed } from "@/constants";
 
 export default async function Home({ searchParams }) {
 
@@ -66,8 +67,8 @@ export default async function Home({ searchParams }) {
           <SearchBar className="w-full md:w-auto" />
 
           <div className="flex justify-start flex-wrap items-center gap-2 mt-5 md:mt-0">
-            <CustomFilter title="Range" />
-            <CustomFilter title="Speed" />
+            <CustomFilter title="Range" options={range} />
+            <CustomFilter title="Speed" options={speed} />
           </div>
         </div>
 

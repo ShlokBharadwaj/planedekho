@@ -17,6 +17,7 @@ export interface ButtonProps
 
 export interface CustomFilterProps {
     title: string;
+    options: Array<{ title: string; value: string }>;
 };
 
 export interface SearchBarProps {
