@@ -31,7 +31,8 @@ export default async function Home({ searchParams }) {
 
   const planes = await Promise.all(
     (await fetchPlanes({
-      manufacturer: searchParams.manufacturer || 'Boeing',
+      manufacturer: searchParams.manufacturer || 'Airbus',
+      // model: searchParams.model || '',
       limit: searchParams.limit || 8,
     }))
       .map(async (plane: PlaneResponseProps) => {

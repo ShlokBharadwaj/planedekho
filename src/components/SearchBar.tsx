@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { ManufacturerSearch } from ".";
 import { SearchBarProps } from "@/types";
 import { useRouter } from "next/navigation";
+// import ModelSearch from "./ModelSearch";
 
 const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
 
@@ -37,11 +38,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
 
   return (
     <form className={`flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl ${className}`} onSubmit={handleSearch} >
-      <div className="flex-1 max-sm:w-full flex justify-start items-center relative">
+      <div className="flex-1 max-sm:w-full flex justify-start items-center relative gap-2">
         <ManufacturerSearch
           manufacturer={manufacturer}
           setManufacturer={setManufacturer}
         />
+        {/* <ModelSearch
+          setManufacturer={setManufacturer}
+        /> */}
       </div>
     </form >
   )

@@ -24,7 +24,7 @@ export async function fetchPlanes(options: FetchPlanesOptions = {}) {
     // Remove the last '&' character
     url = url.slice(0, -1);
 
-    console.log(url);
+    // console.log(url);
 
     const response = await fetch(url, { method: 'GET', headers });
 
