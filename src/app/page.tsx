@@ -4,7 +4,7 @@ import { CustomFilter, Hero, PlaneCard, SearchBar } from "@/components";
 import { fetchPlaneImage, fetchPlanes } from "@/utils";
 import { PlaneResponseProps } from "@/types";
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
 
   // const planes1 = await fetchPlanes({ manufacturer: 'Boeing' });
   // const planes2 = await fetchPlanes({ model: '747' });
@@ -30,10 +30,14 @@ export default async function Home() {
   // The code above works: 
 
   const planes = await Promise.all(
-    (await fetchPlanes({ manufacturer: 'Airbus', limit: 8 })).map(async (plane: PlaneResponseProps) => {
-      const image = await fetchPlaneImage(plane.manufacturer, plane.model);
-      return { ...plane, imageSmall: image.imageSmall, imageRegular: image.imageRegular, photographer: image.photographer, photographerUsername: image.photographerUsername };
-    })
+    (await fetchPlanes({
+      manufacturer: searchParams.manufacturer || 'Boeing',
+      limit: searchParams.limit || 8,
+    }))
+      .map(async (plane: PlaneResponseProps) => {
+        const image = await fetchPlaneImage(plane.manufacturer, plane.model);
+        return { ...plane, imageSmall: image.imageSmall, imageRegular: image.imageRegular, photographer: image.photographer, photographerUsername: image.photographerUsername };
+      })
   );
 
   const isDataEmpty = planes.length === 0 || !planes || planes === undefined || !Array.isArray(planes) || planes === null;

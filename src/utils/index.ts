@@ -1,6 +1,9 @@
 import { FetchPlanesOptions, PlaneImageResponseProps } from "@/types";
 
 export async function fetchPlanes(options: FetchPlanesOptions = {}) {
+
+    const { manufacturer, model, engine_type, min_speed, max_speed, min_range, max_range, min_length, max_length, min_height, max_height, min_wingspan, max_wingspan, limit } = options;
+
     const apiKey = process.env.API_NINJAS_API_KEY;
 
     if (!apiKey) {
@@ -17,6 +20,11 @@ export async function fetchPlanes(options: FetchPlanesOptions = {}) {
     for (const [key, value] of Object.entries(options)) {
         url += `${key}=${encodeURIComponent(value)}&`;
     }
+
+    // Remove the last '&' character
+    url = url.slice(0, -1);
+
+    console.log(url);
 
     const response = await fetch(url, { method: 'GET', headers });
 
