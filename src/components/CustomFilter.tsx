@@ -27,6 +27,32 @@ const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
               <FontAwesomeIcon icon={faCaretDown} className="w-5 h-5 text-gray-400" />
             </span>
           </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="absolute z-50 mt-2 w-full py-1 bg-gray-800 rounded-lg shadow-lg sm:text-sm">
+              {options.map((option) => (
+                <Listbox.Option
+                  key={option.value}
+                  value={option}
+                >
+                  {({ active }) => (
+                    <div
+                      className={`${active ? 'text-gray-900 bg-gray-100' : 'text-gray-300'
+                        } cursor-default select-none relative py-2 pl-3 pr-4`}
+                    >
+                      <span className={`${active ? 'font-medium' : 'font-normal'} block truncate`}>
+                        {option.title}
+                      </span>
+                    </div>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
         </div>
       </Listbox>
     </div>
