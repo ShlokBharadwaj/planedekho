@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CustomFilter, Hero, PlaneCard, SearchBar } from "@/components";
 import { fetchPlaneImage, fetchPlanes } from "@/utils";
 import { PlaneResponseProps } from "@/types";
-import { range, speed } from "@/constants";
+import { range, speed, engine } from "@/constants";
 
 export default async function Home({ searchParams }) {
 
@@ -33,12 +33,29 @@ export default async function Home({ searchParams }) {
   const planes = await Promise.all(
     (await fetchPlanes({
       manufacturer: searchParams.manufacturer || 'Airbus',
-      // model: searchParams.model || '',
+      model: searchParams.model || '',
+      engine_type: searchParams.engine_type || '',
+      min_speed: searchParams.min_speed || 0,
+      max_speed: searchParams.max_speed || 0,
+      min_range: searchParams.min_range || 0,
+      max_range: searchParams.max_range || 0,
+      min_length: searchParams.min_length || 0,
+      max_length: searchParams.max_length || 0,
+      min_height: searchParams.min_height || 0,
+      max_height: searchParams.max_height || 0,
+      min_wingspan: searchParams.min_wingspan || 0,
+      max_wingspan: searchParams.max_wingspan || 0,
       limit: searchParams.limit || 8,
     }))
       .map(async (plane: PlaneResponseProps) => {
         const image = await fetchPlaneImage(plane.manufacturer, plane.model);
-        return { ...plane, imageSmall: image.imageSmall, imageRegular: image.imageRegular, photographer: image.photographer, photographerUsername: image.photographerUsername };
+        return {
+          ...plane,
+          imageSmall: image.imageSmall,
+          imageRegular: image.imageRegular,
+          photographer: image.photographer,
+          photographerUsername: image.photographerUsername
+        };
       })
   );
 
@@ -67,6 +84,7 @@ export default async function Home({ searchParams }) {
           <SearchBar className="w-full md:w-auto" />
 
           <div className="flex justify-start flex-wrap items-center gap-2 mt-5 md:mt-0">
+            <CustomFilter title="Engine" options={engine} />
             <CustomFilter title="Range" options={range} />
             <CustomFilter title="Speed" options={speed} />
           </div>

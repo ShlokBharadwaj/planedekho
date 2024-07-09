@@ -11,14 +11,40 @@ import { CustomFilterProps } from "@/types"
 
 
 const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
+  const router = useRouter();
 
   const [selectedItem, setselectedItem] = useState(options[0]);
+
+  const handleCustomFilter = (range: string, speed: string) => {
+    console.log("Selected item: ", selectedItem);
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (range) {
+      params.set('range_nautical_miles', range);
+    } else {
+      params.delete('range_nautical_miles');
+    }
+
+    if (speed) {
+      params.set('max_speed_knots', speed);
+    } else {
+      params.delete('max_speed_knots');
+    }
+
+    const newPath = `${window.location.pathname}?${params.toString()}`;
+
+    router.push(newPath, { scroll: false });
+  };
 
   return (
     <div className="w-fit">
       <Listbox
         value={selectedItem}
-        onChange={(value) => setselectedItem(value)}
+        onChange={(value) => {
+          setselectedItem(value);
+          handleCustomFilter(value.title, value.title);
+        }}
       >
         <div className="relative w-fit z-50">
           <Listbox.Button className="relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-gray-800 py-2 px-3 text-left shadow-md sm:text-sm border">
