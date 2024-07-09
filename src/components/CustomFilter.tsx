@@ -15,21 +15,23 @@ const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
 
   const [selectedItem, setselectedItem] = useState(options[0]);
 
-  const handleCustomFilter = (range: string, speed: string) => {
+  const handleCustomFilter = (option) => {
+
     console.log("Selected item: ", selectedItem);
+    if (!option.value) return;
 
     const params = new URLSearchParams(window.location.search);
 
-    if (range) {
-      params.set('range_nautical_miles', range);
-    } else {
-      params.delete('range_nautical_miles');
-    }
-
-    if (speed) {
-      params.set('max_speed_knots', speed);
-    } else {
-      params.delete('max_speed_knots');
+    switch (title) {
+      case "Engine":
+        params.set('engine_type', option.value);
+        break;
+      case "Range":
+        params.set('range_nautical_miles', option.value);
+        break;
+      case "Speed":
+        params.set('max_speed_knots', option.value);
+        break;
     }
 
     const newPath = `${window.location.pathname}?${params.toString()}`;
@@ -41,9 +43,9 @@ const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
     <div className="w-fit">
       <Listbox
         value={selectedItem}
-        onChange={(value) => {
-          setselectedItem(value);
-          handleCustomFilter(value.title, value.title);
+        onChange={(option) => {
+          setselectedItem(option);
+          handleCustomFilter(option);
         }}
       >
         <div className="relative w-fit z-50">
@@ -64,11 +66,12 @@ const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
                 <Listbox.Option
                   key={option.value}
                   value={option}
+                  disabled={!option.value}
                 >
-                  {({ active }) => (
+                  {({ active, disabled }) => (
                     <div
                       className={`${active ? 'text-gray-900 bg-gray-100' : 'text-gray-300'
-                        } cursor-default select-none relative py-2 pl-3 pr-4`}
+                        } cursor-default select-none relative py-2 pl-3 pr-4 ${disabled ? 'opacity-50' : ''}`}
                     >
                       <span className={`${active ? 'font-medium' : 'font-normal'} block truncate`}>
                         {option.title}
